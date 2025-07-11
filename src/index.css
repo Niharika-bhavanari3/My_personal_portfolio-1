@@ -1,96 +1,52 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Import futuristic fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap');
 
+/* Definition of the design system with cyberpunk theme */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 180 100% 50%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 320 100% 50%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 60%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 120 100% 50%;
+    --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 180 50% 20%;
+    --input: 0 0% 10%;
+    --ring: 180 100% 50%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 0 0% 2%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 180 100% 50%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 8%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 180 50% 15%;
+    --sidebar-ring: 180 100% 50%;
   }
 }
 
@@ -99,7 +55,375 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground;
+  html {
+    scroll-behavior: smooth;
   }
+
+  body {
+    @apply bg-black text-white;
+    font-family: 'Space Mono', monospace;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', monospace;
+  }
+}
+
+/* Cyberpunk Animations & Effects */
+@layer components {
+  /* Loading Animation */
+  .loading-bar {
+    @apply w-64 h-2 bg-gray-800 rounded-full overflow-hidden;
+  }
+
+  .loading-progress {
+    @apply h-full bg-gradient-to-r from-cyan-400 to-pink-400 rounded-full;
+    animation: loading 2s ease-in-out;
+    width: 0%;
+  }
+
+  @keyframes loading {
+    0% { width: 0%; }
+    50% { width: 70%; }
+    100% { width: 100%; }
+  }
+
+  /* Glitch Text Effect */
+  .glitch-text {
+    position: relative;
+    display: inline-block;
+  }
+
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .glitch-text::before {
+    animation: glitch-1 0.5s infinite;
+    color: #00ffff;
+    z-index: -1;
+  }
+
+  .glitch-text::after {
+    animation: glitch-2 0.5s infinite;
+    color: #ff00ff;
+    z-index: -2;
+  }
+
+  @keyframes glitch-1 {
+    0%, 14%, 15%, 49%, 50%, 99%, 100% {
+      transform: translate(0);
+    }
+    15%, 49% {
+      transform: translate(-2px, -2px);
+    }
+  }
+
+  @keyframes glitch-2 {
+    0%, 20%, 21%, 62%, 63%, 99%, 100% {
+      transform: translate(0);
+    }
+    21%, 62% {
+      transform: translate(2px, 2px);
+    }
+  }
+
+  /* Particles Background */
+  .particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, #00ffff, transparent),
+      radial-gradient(2px 2px at 40px 70px, #ff00ff, transparent),
+      radial-gradient(1px 1px at 90px 40px, #00ff00, transparent),
+      radial-gradient(1px 1px at 130px 80px, #ffff00, transparent),
+      radial-gradient(2px 2px at 160px 30px, #ff0080, transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: particles 20s linear infinite;
+  }
+
+  @keyframes particles {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-200px, -100px); }
+  }
+
+  /* Grid Overlay */
+  .grid-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: grid-move 10s linear infinite;
+  }
+
+  @keyframes grid-move {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+  }
+
+  /* Cyber Button */
+  .cyber-button {
+    @apply relative px-8 py-4 bg-transparent border-2 border-cyan-400 text-cyan-400 font-mono font-bold uppercase tracking-wider overflow-hidden transition-all duration-300;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 100%, 20px 100%);
+  }
+
+  .cyber-button::before {
+    content: '';
+    @apply absolute inset-0 bg-cyan-400 transform -translate-x-full transition-transform duration-300;
+  }
+
+  .cyber-button:hover::before {
+    @apply translate-x-0;
+  }
+
+  .cyber-button:hover {
+    @apply text-black shadow-lg;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  }
+
+  .cyber-button span {
+    @apply relative z-10;
+  }
+
+  .cyber-button-small {
+    @apply cyber-button px-4 py-2 text-sm;
+  }
+
+  /* Cyber Card */
+  .cyber-card {
+    @apply bg-gradient-to-br from-gray-900/80 to-black/80 border border-cyan-500/30 rounded-lg backdrop-blur-sm relative overflow-hidden;
+    box-shadow: 0 8px 32px rgba(0, 255, 255, 0.1);
+  }
+
+  .cyber-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-cyan-400/5 to-pink-400/5 pointer-events-none;
+  }
+
+  .cyber-card:hover {
+    @apply border-cyan-400/50;
+    box-shadow: 0 12px 40px rgba(0, 255, 255, 0.2);
+  }
+
+  /* Tech Badges */
+  .tech-badge {
+    @apply w-24 h-24 relative;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .tech-badge:nth-child(2n) {
+    animation-delay: -1s;
+  }
+
+  .tech-badge:nth-child(3n) {
+    animation-delay: -2s;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Skill Badges */
+  .skill-badge {
+    @apply px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-pink-500/20 border border-cyan-400/30 rounded-lg text-sm font-mono text-center;
+    animation: skill-glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes skill-glow {
+    0% { box-shadow: 0 0 5px rgba(0, 255, 255, 0.3); }
+    100% { box-shadow: 0 0 15px rgba(255, 0, 255, 0.3); }
+  }
+
+  /* Language Badges */
+  .language-badge {
+    @apply px-4 py-2 bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-400/30 rounded-full text-sm font-mono;
+  }
+
+  /* Certification Cards */
+  .certification-card {
+    @apply cyber-card p-6 transform transition-all duration-300 hover:scale-105;
+    animation: certSlideUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  @keyframes certSlideUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Status Badge */
+  .status-badge {
+    @apply px-3 py-1 rounded-full text-xs font-bold text-black;
+  }
+
+  /* Tech Tags */
+  .tech-tag {
+    @apply px-3 py-1 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-400/30 rounded-full text-sm font-mono text-purple-300;
+  }
+
+  .tech-tag-small {
+    @apply px-2 py-1 bg-gradient-to-r from-gray-700 to-gray-800 border border-gray-600 rounded text-xs font-mono text-gray-300;
+  }
+
+  /* Project Cards */
+  .project-card {
+    @apply cyber-card flex flex-col lg:flex-row items-center gap-8 mb-12 transform transition-all duration-500 hover:scale-[1.02];
+  }
+
+  /* Project Links */
+  .project-link {
+    @apply flex items-center gap-2 px-4 py-2 bg-transparent border border-cyan-400 text-cyan-400 rounded-lg hover:bg-cyan-400 hover:text-black transition-all duration-300 font-mono text-sm;
+  }
+
+  /* Achievement Cards */
+  .achievement-card {
+    @apply cyber-card p-6 transform transition-all duration-300 hover:scale-105;
+    animation: achievementFade 1s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes achievementFade {
+    to { opacity: 1; }
+  }
+
+  /* Blog Cards */
+  .blog-card {
+    @apply cyber-card transform transition-all duration-300 hover:scale-[1.02] hover:-translate-y-2;
+  }
+
+  .featured-post {
+    @apply border-pink-400/50;
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.1);
+  }
+
+  /* Category Elements */
+  .category-button {
+    @apply px-4 py-2 bg-transparent border border-gray-600 text-gray-400 rounded-lg hover:border-cyan-400 hover:text-cyan-400 transition-all duration-300 font-mono text-sm;
+  }
+
+  .category-tag {
+    @apply px-3 py-1 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-400/30 rounded-full text-xs font-mono text-cyan-300;
+  }
+
+  .featured-badge {
+    @apply px-2 py-1 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full text-xs font-bold;
+  }
+
+  /* Read More Button */
+  .read-more-btn {
+    @apply flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-mono text-sm;
+  }
+
+  /* Experience Cards */
+  .experience-card {
+    @apply cyber-card p-6 transform transition-all duration-300 hover:scale-105;
+  }
+
+  .time-badge {
+    @apply px-3 py-1 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-400/30 rounded-full text-xs font-mono text-yellow-300;
+  }
+
+  /* Contact Form */
+  .contact-input {
+    @apply w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300 font-mono;
+  }
+
+  /* Social Icons */
+  .social-icon {
+    @apply transform transition-all duration-300 hover:scale-110;
+  }
+
+  .social-icon-footer {
+    @apply transform transition-all duration-300 hover:scale-110 text-gray-400;
+  }
+
+  /* Navigation Links */
+  .cyber-link {
+    @apply relative;
+  }
+
+  .cyber-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300;
+  }
+
+  .cyber-link:hover::after {
+    @apply w-full;
+  }
+
+  /* Scroll Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  /* Responsive Utilities */
+  @media (max-width: 768px) {
+    .glitch-text {
+      font-size: clamp(2rem, 8vw, 4rem);
+    }
+    
+    .particles {
+      background-size: 100px 50px;
+    }
+    
+    .grid-overlay {
+      background-size: 25px 25px;
+    }
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00ffff, #ff00ff);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff00ff, #00ffff);
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 255, 255, 0.3);
+  color: white;
+}
+
+::-moz-selection {
+  background: rgba(0, 255, 255, 0.3);
+  color: white;
 }
